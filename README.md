@@ -1,5 +1,5 @@
 # 타이머, 탭 클릭으로 변경되는 상품 목록
-- 사용언어 : Javascript ES6, HTML5, SCSS, 
+- 사용언어 : Javascript ES6, HTML5, SCSS
 - 작업 시간 : 8시간
 
 <br/> 
