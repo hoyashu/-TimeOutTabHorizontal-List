@@ -2,468 +2,69 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, viewport-fit=cover">
+    <meta content="width=device-width, viewport-fit=cover"
+          name="viewport">
     <title>쿠키, 탭 기능 구현</title>
-    <link rel="stylesheet" href="./static/css/reset.css">
-    <link rel="stylesheet" href="./static/css/common.css">
+    <!-- css 시작 -->
+    <link href="./static/css/reset.css" rel="stylesheet">
+    <link href="./static/css/common.css" rel="stylesheet">
+    <!-- css 끝 -->
+    <!-- script 시작 -->
+    <script src="./static/js/timeOut.js"></script>
+    <script src="./static/js/data.js"></script>
+    <script src="./static/js/tab.js"></script>
+    <!-- script 끝 -->
 </head>
 <body>
-    <div id="header">
-        <div class="time_banner"><i class="icon">⏰</i><span class="day"></span>일 <span class="hours"></span>시간 <span
-                class="min"></span>분 남았어요!</div>
-        <h1>독점 최저가, 이번주 핫딜!</h1>
-        <p class="sub_title">포털, 쇼핑몰 등 어디와 비교해도 우주 마켓이 최저가에요.</p>
+<div id="header">
+    <div class="time_banner"><i class="icon">⏰</i><span class="day"></span>일 <span class="hours"></span>시간 <span
+            class="min"></span>분 남았어요!
     </div>
-    <div id="content">
-        <div id="tab">
-            <ul class="tab_btns">
-                <li class="tab_item active" data-index="1"><i class="icon">🐓</i>아임닭 아임웰</li>
-                <li class="tab_item" data-index="2"><i class="icon">🍜</i>아임쿡밀</li>
-                <li class="tab_item" data-index="3"><i class="icon">🥣</i>마이비밀</li>
-                <li class="tab_item" data-index="4"><i class="icon">🐓</i>슬림쿡</li>
-                <li class="tab_item" data-index="5"><i class="icon">🍜</i>밀키파인드</li>
-                <li class="tab_item" data-index="6"><i class="icon">🥣</i>그릭데이</li>
-                <li class="tab_item" data-index="7"><i class="icon">🐓</i>서비푸드</li>
-                <li class="tab_item" data-index="8"><i class="icon">🍜</i>자온</li>
-                <li class="tab_item" data-index="9"><i class="icon">🥣</i>호랑이</li>
-                <li class="tab_item" data-index="10"><i class="icon">🐓</i>김밥</li>
-                <li class="tab_item" data-index="11"><i class="icon">🍜</i>고양이</li>
-                <li class="tab_item" data-index="12"><i class="icon">🥣</i>향수</li>
-                <li class="tab_item" data-index="13"><i class="icon">🐓</i>카메라</li>
-                <li class="tab_item" data-index="14"><i class="icon">🍜</i>연필</li>
-                <li class="tab_item" data-index="15"><i class="icon">🥣</i>밀크</li>
-                <li class="tab_item" data-index="16"><i class="icon">🐓</i>핑크</li>
-                <li class="tab_item" data-index="17"><i class="icon">🍜</i>행복</li>
-                <li class="tab_item" data-index="18"><i class="icon">🥣</i>웃음</li>
-                <li class="tab_item" data-index="19"><i class="icon">🐓</i>햇살</li>
-                <li class="tab_item" data-index="20"><i class="icon">🍜</i>색연필</li>
-            </ul>
-            <div class="tab_content">
-                <div class="item_box_outer">
-                    <ul class="item_box">
-                        <!-- 상품목록 -->
-                    </ul>
-                </div>
-                <div class="event_box">
-                    <div class="event"><b>아임닭 아임웰</b><span>3만원이상 무료배송 | 1+1 | 사은품</span></div>
-                </div>
+    <h1>독점 최저가, 이번주 핫딜!</h1>
+    <p class="sub_title">포털, 쇼핑몰 등 어디와 비교해도 우주 마켓이 최저가에요.</p>
+</div>
+<div id="content">
+    <div id="tab">
+        <ul class="tab_btns">
+            <li class="tab_item active" data-index="1"><i class="icon">🐓</i>아임닭 아임웰</li>
+            <li class="tab_item" data-index="2"><i class="icon">🍜</i>아임쿡밀</li>
+            <li class="tab_item" data-index="3"><i class="icon">🥣</i>마이비밀</li>
+            <li class="tab_item" data-index="4"><i class="icon">🐓</i>슬림쿡</li>
+            <li class="tab_item" data-index="5"><i class="icon">🍜</i>밀키파인드</li>
+            <li class="tab_item" data-index="6"><i class="icon">🥣</i>그릭데이</li>
+            <li class="tab_item" data-index="7"><i class="icon">🐓</i>서비푸드</li>
+            <li class="tab_item" data-index="8"><i class="icon">🍜</i>자온</li>
+            <li class="tab_item" data-index="9"><i class="icon">🥣</i>호랑이</li>
+            <li class="tab_item" data-index="10"><i class="icon">🐓</i>김밥</li>
+            <li class="tab_item" data-index="11"><i class="icon">🍜</i>고양이</li>
+            <li class="tab_item" data-index="12"><i class="icon">🥣</i>향수</li>
+            <li class="tab_item" data-index="13"><i class="icon">🐓</i>카메라</li>
+            <li class="tab_item" data-index="14"><i class="icon">🍜</i>연필</li>
+            <li class="tab_item" data-index="15"><i class="icon">🥣</i>밀크</li>
+            <li class="tab_item" data-index="16"><i class="icon">🐓</i>핑크</li>
+            <li class="tab_item" data-index="17"><i class="icon">🍜</i>행복</li>
+            <li class="tab_item" data-index="18"><i class="icon">🥣</i>웃음</li>
+            <li class="tab_item" data-index="19"><i class="icon">🐓</i>햇살</li>
+            <li class="tab_item" data-index="20"><i class="icon">🍜</i>색연필</li>
+        </ul>
+        <div class="tab_content">
+            <div class="item_box_outer">
+                <ul class="item_box">
+                    <!-- 상품목록 -->
+                </ul>
+            </div>
+            <div class="event_box">
+                <div class="event"><b>아임닭 아임웰</b><span>3만원이상 무료배송 | 1+1 | 사은품</span></div>
             </div>
         </div>
-        <div class="btn btn_big">최저가 핫딜 전체 상품 보기<i class="icon">&gt;</i></div>
     </div>
-    <script>
-        // ###### 타이머 시작 ######
-        //타이머 시간 설정
-        var expDay = 5;
-        var expHours = 11;
-        var expMin = 10;
-        document.addEventListener("DOMContentLoaded", function() {
-            /* ### 타이머 시작 ### */
-            var day;
-            var hours;
-            var min;
-            //방문 기록이 있는 경우
-            if (getCookie("timeout")) {
-                var now = new Date().getTime();
-                var expDate = new Date(getCookie("timeout")).getTime();
-                var leftSec = expDate - now;
-                day = Math.floor(leftSec / (1000 * 60 * 60 * 24));
-                hours = Math.floor((leftSec % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                min = Math.floor((leftSec % (1000 * 60 * 60)) / (1000 * 60));
-            } else {
-                //첫 방문인 경우 초기 설정 값 표시
-                day = expDay;
-                hours = expHours;
-                min = expMin;
-                //쿠키 등록
-                setCookie("timeout");
-            }
-            //타이머 값 출력
-            document.querySelector(".time_banner .day").innerText = day;
-            document.querySelector(".time_banner .hours").innerText = hours;
-            document.querySelector(".time_banner .min").innerText = min;
-            /* ### 타이머 끝 ### */
-        })
-        //쿠키 삭제
-        function delCookie(name) {
-            document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
-        }
-        //쿠키 저장
-        function setCookie(name) {
-            var expDate = new Date();
-            var expires = ((expDay * 24 * 60 * 60) + (expHours * 60 * 60) + expMin * 60) * 1000;
-            expDate.setTime(expDate.getTime() + expires);
-            document.cookie = name + "=" + escape(expDate.toGMTString()) + "; path=/; expires=" + expDate
-                .toGMTString() + ";"
-        }
-        //쿠키 추출
-        function getCookie(name) {
-            var nameOfCookie = name + "=";
-            var x = 0;
-            while (x <= document.cookie.length) {
-                var y = (x + nameOfCookie.length);
-                if (document.cookie.substring(x, y) == nameOfCookie) {
-                    if ((endOfCookie = document.cookie.indexOf(";", y)) == -1) endOfCookie = document.cookie.length;
-                    return unescape(document.cookie.substring(y, endOfCookie));
-                }
-                x = document.cookie.indexOf(" ", x) + 1;
-                if (x === 0) break;
-            }
-            return "";
-        }
-        // ###### 타이머 끝 ######
-    </script>
-    <script>
-        // ajax통신으로 가져올 data
-        var listData = [{
-                "brandName": "아임닭",
-                "brandCode": 1,
-                "event": 1,
-                "itemList": [{
-                    "name": "닭가슴살 더블스테이크 모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "아임쿡밀",
-                "brandCode": 2,
-                "event": 0,
-                "itemList": [{
-                    "name": "한입가득 스팀 닭가슴살 6종 혼합 12/24/36/48팩 [아임닭데이]",
-                    "img": "./static/img/thumb2.jpeg",
-                    "taste": 2,
-                    "good": 3.1,
-                    "per": 28,
-                    "originPrice": 30000,
-                    "sellPrice": 21600
-                }]
-            },
-            {
-                "brandName": "마이비밀",
-                "brandCode": 3,
-                "event": 0,
-                "itemList": [{
-                    "name": "프랑크 소시지 5종 혼합 10/20/30팩 [아임닭데이]",
-                    "img": "./static/img/thumb3.jpeg",
-                    "taste": 4,
-                    "good": 1.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "슬림쿡",
-                "brandCode": 4,
-                "event": 0,
-                "itemList": [{
-                    "name": "쉐프메이드 닭가슴살 4종 혼합 12/24/36/48팩 [아임닭데이]",
-                    "img": "./static/img/thumb4.jpeg",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 28,
-                    "originPrice": 30000,
-                    "sellPrice": 21600
-                }]
-            },
-            {
-                "brandName": "밀키파인드",
-                "brandCode": 5,
-                "event": 0,
-                "itemList": [{
-                    "name": "쉐프메이드 통후추맛 닭가슴살 12/24/36팩 [아임닭데이]",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 28,
-                    "originPrice": 30000,
-                    "sellPrice": 21600
-                }]
-            },
-            {
-                "brandName": "그릭데이",
-                "brandCode": 6,
-                "event": 0,
-                "itemList": [{
-                    "name": "담백달콤 스틱형 군고구마바 (8개입) 1/3/6팩",
-                    "img": "./static/img/thumb4.jpeg",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 28,
-                    "originPrice": 30000,
-                    "sellPrice": 21600
-                }]
-            },
-            {
-                "brandName": "서비푸드",
-                "brandCode": 7,
-                "event": 0,
-                "itemList": [{
-                    "name": "통밀 브리또 4종 혼합 8/12/16팩",
-                    "img": "./static/img/thumb3.jpeg",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "자온",
-                "brandCode": 8,
-                "event": 0,
-                "itemList": [{
-                    "name": "쫀득쫀득 곤약 찰바 4종 혼합 12/20/28팩",
-                    "img": "./static/img/thumb2.jpeg",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 28,
-                    "originPrice": 30000,
-                    "sellPrice": 21600
-                }]
-            },
-            {
-                "brandName": "호랑이",
-                "brandCode": 9,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb3.jpeg",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "김밥",
-                "brandCode": 10,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 28,
-                    "originPrice": 30000,
-                    "sellPrice": 21600
-                }]
-            },
-            {
-                "brandName": "고양이",
-                "brandCode": 11,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "향수",
-                "brandCode": 12,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "카메라",
-                "brandCode": 13,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "연필",
-                "brandCode": 14,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "밀크",
-                "brandCode": 15,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "핑크",
-                "brandCode": 16,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "행복",
-                "brandCode": 17,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "웃음",
-                "brandCode": 18,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "햇살",
-                "brandCode": 19,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            },
-            {
-                "brandName": "색연필",
-                "brandCode": 20,
-                "event": 0,
-                "itemList": [{
-                    "name": "모짜렐라 치즈",
-                    "img": "./static/img/thumb1.png",
-                    "taste": 4.9,
-                    "good": 4.9,
-                    "per": 45,
-                    "originPrice": 2270,
-                    "sellPrice": 1490
-                }]
-            }
-        ];
-    </script>
-    <script>
-        // ###### [2] ~ 탭 시작 ######
-        //tab ul
-        var tabBtn = document.getElementsByClassName("tab_item");
-        var itemBox = document.querySelector(".item_box");
-        //화면 로드시, 맨 첫번째 tab active
-        document.addEventListener("DOMContentLoaded", function() {
-            itemBox.setAttribute('tabIndex', 1);
-            var el = tabBtn[0];
-            makeContent(el, 1);
-        })
-        for (var i = 0; i < tabBtn.length; i++) {
-            tabBtn[i].addEventListener('click', function () {
-                //ie에서 event capture not working
-                for (var i = 0; i < tabBtn.length; i++) {
-                    tabBtn[i].classList.remove('active');
-                };
-                //tab active
-                this.classList.add('active')
-                //클릭한 tab index확인
-                var clickIndex = this.dataset.index
-                //현재 content index확인
-                var contentIndex = itemBox.dataset.index;
-                //현재 켜져있는 탭을 또 누른 경우를 제외하고 작동한다.
-                if (contentIndex !== clickIndex) {
-                    //탭 content 변경
-                    makeContent(this, clickIndex);
-                }
-            })
-        };
-        //세자릿수에 콤마 추가
-        function numberDot(x) {
-            x = x.toLocaleString('ko-KR');
-            return x;
-        };
-       
-        //[3] - 1 ~ 탭에 따른 목록 변경
-        function makeContent(el, tabIndex){
-            //ul의 tabIndex를 누른 tab index로 변경
-            itemBox.setAttribute('tabIndex', tabIndex);
-            //탭의 index와 같은 데이터 가져오기
-            var result = listData.filter(function(e){return (e.brandCode * 1) === (tabIndex * 1)});
-            var activeItemList = result[0].itemList;
-            var item = "<li class='item'> <div class='img_box'> <a href='#'> <div class='low_label'><span>↓<br>최저가</span></div><div class='thumb_box'> <img src='" + activeItemList[0].img + "' alt=" + activeItemList[0].name + "'> </div></a> <div class='btn btn_add_cart'><img src='./static/img/ico-cart.png' alt='장바구니 아이콘'></div></div><div class='dec_box'> <a href='#'> <div class='dec_name'> <span class='brand'>" + result[0].brandName+ "</span> <span class='title'>" + activeItemList[0].name+ "</span> </div><div class='dec_star'> <ul> <li>맛<i class='icon'>★</i><span class='star'>" + activeItemList[0].taste+ "</span></li><li>안질림<i class='icon'>★</i><span class='star'>" + activeItemList[0].good+ "</span></li></ul> </div><div class='dec_price'> <p class='origin_price'>" + numberDot(activeItemList[0].originPrice) + "원</p><p class='sell_price'><span class='per'>" + activeItemList[0].per + "%</span>" + numberDot(activeItemList[0].sellPrice) + "원</p></div></a> </div></li>";
-            //새로운 목록으로 변경            
-            var htlr = "";
-            for (var i = 0; i < tabIndex; i++) {
-                htlr += item
-            }
-            itemBox.innerHTML = htlr;
-            //해당 브랜드에서 진행중인 이벤트가 있는 경우, 광고 배너 출력
-            var eventTxt = "";
-            if (result[0].event > 0) {
-                eventTxt = "<div class='event'><b>아임닭 아임웰</b><span>3만원이상 무료배송 | 1+1 | 사은품</span></div>";
-            }
-            document.querySelector(".event_box").innerHTML = eventTxt;
-            //[3] - 2 ~ 해당 브랜드명과 목록인덱스 콘솔 출력
-            console.log(result[0].brandName);
-            console.log(activeItemList);
-        };
-    </script>
-    <script>
-        //[4] ~ Alert 발생
-        document.querySelector(".btn_big").addEventListener("click", function(evt){
-            alert("최저가 핫딜 전체 상품보기");
-        })
-    </script>
+    <div class="btn btn_big">최저가 핫딜 전체 상품 보기<i class="icon">&gt;</i></div>
+</div>
+<script>
+    //[4] ~ Alert 발생
+    document.querySelector(".btn_big").addEventListener("click", function (evt) {
+        alert("최저가 핫딜 전체 상품보기");
+    })
+</script>
 </body>
 </html>
